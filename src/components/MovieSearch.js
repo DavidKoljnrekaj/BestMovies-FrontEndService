@@ -7,7 +7,8 @@ function MovieSearch() {
 
   const handleSearch = async () => {
     try {
-      const response = await searchMovies(query);
+      const formattedQuery = query.replace(/ /g, '+');
+      const response = await searchMovies(formattedQuery);
       setResults(response.results);
     } catch (error) {
       console.error('Error searching for movies:', error);

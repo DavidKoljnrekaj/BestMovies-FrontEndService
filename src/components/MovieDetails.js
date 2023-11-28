@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../services/movieService';
 
 function MovieDetails({ match }) {
   const [details, setDetails] = useState(null);
-
+  let { movieId } = useParams();
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await getMovieDetails(match.params.movieId);
+        const response = await getMovieDetails(movieId);
         setDetails(response);
       } catch (error) {
         console.error('Error fetching movie details:', error);
@@ -15,7 +16,7 @@ function MovieDetails({ match }) {
     };
 
     fetchMovieDetails();
-  }, [match.params.movieId]);
+  }, [movieId]);
 
   return (
     <div>

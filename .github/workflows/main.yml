@@ -24,15 +24,17 @@ jobs:
       - name: Run Tests
         run: npm test
 
-      - name: Build and Push Docker Image
-        uses: actions/docker/cli@v2
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
         with:
-          args: build -t gcr.io/bestmoviesdb/react-app:${{ github.sha }} .
+          context: .
+          push: false
+          tags: gcr.io/bestmoviesdb/react-app:${{ github.sha }}
 
-      - name: Configure Google Cloud Authentication
-        uses: GoogleCloudPlatform/bestmoviesdb/setup-gcloud@master
+
+      - name: Setup Gcloud
+        uses: google-github-actions/setup-gcloud@v0.2.1
         with:
-          version: 'latest'
           project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
           export_default_credentials: true

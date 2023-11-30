@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/movies'; // Update with actual URL
+const API_BASE_URL = 'http://localhost:5001/movies'; // Update with actual URL
 
 export const searchMovies = async (query) => {
   try {

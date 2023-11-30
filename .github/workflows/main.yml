@@ -47,6 +47,10 @@ jobs:
         run: |
           sed -i 's|gcr.io/bestmoviesdb/front-end:.*|gcr.io/bestmoviesdb/front-end:'"${GITHUB_SHA}"'|' ./kubernetes/react-app-deployment.yaml
   
+      - name: Get Kubernetes credentials
+        run: |
+          gcloud container clusters get-credentials bestmoviesdb-cluster --zone europe-north1
+
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f ./kubernetes/react-app-deployment.yaml

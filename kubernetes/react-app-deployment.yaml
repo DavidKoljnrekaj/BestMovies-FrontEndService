@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: gcr.io/bestmoviesdb/front-end-test:test
+        image: gcr.io/bestmoviesdb/front-end:test

@@ -46,6 +46,10 @@ jobs:
         run: |
           docker push gcr.io/bestmoviesdb/react-app:${{ github.sha }}
 
+      - name: Update Kubernetes Deployment
+        run: |
+          sed -i 's|gcr.io/bestmoviesdb/front-end-test:.*|gcr.io/bestmoviesdb/front-end-test:'"${GITHUB_SHA}"'|' ./kubernetes/react-app-deployment.yaml
+  
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f ./kubernetes/react-app-deployment.yaml

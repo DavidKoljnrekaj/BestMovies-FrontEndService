@@ -28,6 +28,10 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           credentials_json: '${{ secrets.GCLOUD_AUTH }}'
+
+      - name: Configure Docker for GCR
+        run: |
+          gcloud auth configure-docker
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v2

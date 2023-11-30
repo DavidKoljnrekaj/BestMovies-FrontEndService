@@ -31,6 +31,10 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_AUTH}}
           export_default_credentials: true
       
+      - name: Gcloud auth plugin
+        run: |
+          gcloud components install gke-gcloud-auth-plugin
+
       - name: Get Kubernetes credentials
         run: |
           gcloud container clusters get-credentials bestmoviesdb-cluster --zone europe-north1

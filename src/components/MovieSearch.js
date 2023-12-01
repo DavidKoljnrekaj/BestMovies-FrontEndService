@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { searchMovies } from '../services/movieService';
+import { Link } from 'react-router-dom';
+import './MovieSearch.js.css';
 
 function MovieSearch() {
   const [query, setQuery] = useState('');
@@ -16,18 +18,28 @@ function MovieSearch() {
   };
 
   return (
-    <div>
-      <h1>Movie Search</h1>
-      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
-      <button onClick={handleSearch}>Search</button>
-
-      <ul>
-        {results.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
+    <div className="container">
+      <h1 className="title">Movie Search</h1>
+      <div className="search-bar">
+        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+  
+      <div className="results">
+        {results.length > 0 ? (
+      results.map((movie) => (
+        <Link to={`/movies/${movie.id}`} key={movie.id} className="card">
+          <h2>{movie.title}</h2>
+          <p>{movie.overview}</p>
+        </Link>
+      ))
+    ) : (
+      <p>No movies found</p>
+    )}
+      </div>
+  
+      <Link to="/login" className="login-button">Login</Link>
     </div>
-  );
-}
+  );}
 
 export default MovieSearch;

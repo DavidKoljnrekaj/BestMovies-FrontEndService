@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5002/users'; // Update with actual URL
+const API_BASE_URL = 'http://34.88.83.207/user'; 
 
 export const signup = async (username, password) => {
   try {

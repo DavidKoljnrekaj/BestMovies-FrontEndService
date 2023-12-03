@@ -26,6 +26,10 @@ export const login = async (username, password) => {
       body: JSON.stringify({ username, password }),
     });
     const data = await response.json();
+    if (data.token) {
+      localStorage.setItem('token', data.token); 
+      //const value = localStorage.getItem('myKey');localStorage.removeItem('myKey');localStorage.clear();
+    }
     return data;
   } catch (error) {
     throw error;

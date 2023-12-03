@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { searchMovies } from '../services/movieService';
 import { Link } from 'react-router-dom';
 import './MovieSearch.js.css';
@@ -6,6 +6,14 @@ import './MovieSearch.js.css';
 function MovieSearch() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('username');
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
 
   const handleSearch = async () => {
     try {
@@ -38,7 +46,11 @@ function MovieSearch() {
     )}
       </div>
   
-      <Link to="/login" className="login-button">Login</Link>
+      {user ? (
+        <Link to={`/profile/${user}`} className="profile-button">{user}</Link>
+      ) : (
+        <Link to="/login" className="profile-button">Login</Link>
+      )}
     </div>
   );}
 

@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://34.88.83.207/user'; 
+const API_BASE_URL = 'http://localhost:5002/user'; 
 
 export const signup = async (username, password) => {
   try {
@@ -26,8 +26,31 @@ export const login = async (username, password) => {
       body: JSON.stringify({ username, password }),
     });
     const data = await response.json();
+    if (data.token) {
+      localStorage.setItem('token', data.token); 
+      console.log(data.token);
+      //const value = localStorage.getItem('myKey');localStorage.removeItem('myKey');localStorage.clear();
+      localStorage.setItem('username', username);
+      console.log(username);
+    }
     return data;
   } catch (error) {
     throw error;
   }
 };
+
+export const getFavourites = async (username) => {
+  /*try {
+    const response = await fetch(`${API_BASE_URL}/profile/${username}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    const data = await response.json();
+    return data.favorites;
+  } catch (error) {
+    throw error;
+  }*/
+  return null;
+}
+

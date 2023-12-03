@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieSearch from './components/MovieSearch';
 import MovieDetails from './components/MovieDetails';
 import AuthForm from './components/AuthForm';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route path="/movies/:movieId" element={<MovieDetails />} />
           <Route path="/login" element={<AuthForm />} />
           <Route path="/signup" element={<AuthForm />} />
-          {/* Add more routes as needed */}
+          <Route path="/profile/:username" element={<Profile />} />
         </Routes>
       </div>
     </Router>

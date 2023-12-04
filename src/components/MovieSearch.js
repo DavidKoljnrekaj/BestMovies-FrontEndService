@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { searchMovies } from '../services/movieService';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 import './MovieSearch.js.css';
 
 function MovieSearch() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('username');
-    if (storedUser) {
-      setUser(storedUser);
-    }
-  }, []);
-
+  
   const handleSearch = async () => {
     try {
       const formattedQuery = query.replace(/ /g, '+');
@@ -27,6 +20,7 @@ function MovieSearch() {
 
   return (
     <div className="container">
+      <Header />
       <h1 className="title">Movie Search</h1>
       <div className="search-bar">
         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
@@ -45,12 +39,6 @@ function MovieSearch() {
       <p>No movies found</p>
     )}
       </div>
-  
-      {user ? (
-        <Link to={`/profile/${user}`} className="profile-button">{user}</Link>
-      ) : (
-        <Link to="/login" className="profile-button">Login</Link>
-      )}
     </div>
   );}
 

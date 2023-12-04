@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFavourites } from '../services/userService';
+import MovieTable from './MovieTable';
 
 function Profile() {
   const { username } = useParams();
@@ -14,15 +15,7 @@ function Profile() {
     <div>
       <h1>{username}'s Profile</h1>
       <h2>Favorite Movies</h2>
-      {favorites.length > 0 ? (
-        <ul>
-          {favorites.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No favorite movies</p>
-      )}
+      <MovieTable movies={favorites} />
     </div>
   );
 }

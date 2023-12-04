@@ -1,7 +1,6 @@
 import React, { useState} from 'react';
 import { searchMovies } from '../services/movieService';
-import { Link } from 'react-router-dom';
-import Header from './Header';
+import MovieTable from './MovieTable';
 import './MovieSearch.js.css';
 
 function MovieSearch() {
@@ -20,25 +19,13 @@ function MovieSearch() {
 
   return (
     <div className="container">
-      <Header />
       <h1 className="title">Movie Search</h1>
       <div className="search-bar">
         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
         <button onClick={handleSearch}>Search</button>
       </div>
   
-      <div className="results">
-        {results.length > 0 ? (
-      results.map((movie) => (
-        <Link to={`/movies/${movie.id}`} key={movie.id} className="card">
-          <h2>{movie.title}</h2>
-          <p>{movie.overview}</p>
-        </Link>
-      ))
-    ) : (
-      <p>No movies found</p>
-    )}
-      </div>
+      <MovieTable movies={results} />
     </div>
   );}
 

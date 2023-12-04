@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px;
+  width: 200px;
+  height: 250px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden; /* Add this to prevent content from spilling over */
+}
+
+.card:hover {
+  background-color: #f0f0f0;
+}

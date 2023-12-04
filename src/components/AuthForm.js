@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { signup, login } from '../services/userService';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './AuthForm.js.css'; 
 
-function AuthForm() {
+function AuthForm({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -23,8 +23,8 @@ function AuthForm() {
   const handleLogin = async () => {
     setMessage('');
     try {
-      // Replace this with your actual login logic
       await login(username, password);
+      onLogin(username);
       navigate('/');
     } catch (error) {
       setMessage(`Please enter a valid username and password`);
@@ -47,7 +47,6 @@ function AuthForm() {
         <button onClick={handleLogin}>Login</button>
         {message && <p>{message}</p>}
       </div>
-      <Link to="/" className="back-button">Back to Search</Link>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../services/movieService';
-import { Link } from 'react-router-dom';
 import './MovieDetails.js.css';
 
 function MovieDetails({ match }) {
@@ -39,7 +38,6 @@ function MovieDetails({ match }) {
           <p>Vote Count: {details.vote_count}</p>
         </div>
       )}
-      <Link to="/" className="back-button">Back to Search</Link>
     </div>
   );
 }

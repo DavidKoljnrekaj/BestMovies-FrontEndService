@@ -29,9 +29,6 @@ export const login = async (username, password) => {
     if (data.token) {
       localStorage.setItem('token', data.token); 
       console.log(data.token);
-      //const value = localStorage.getItem('myKey');localStorage.removeItem('myKey');localStorage.clear();
-      localStorage.setItem('username', username);
-      console.log(username);
     }
     return data;
   } catch (error) {

@@ -1,4 +1,12 @@
 const API_BASE_URL = /*'http://34.88.186.82/movies'*/ 'http://localhost:5001/movies';
+let fetch;
+
+if (typeof window === 'undefined') {
+  //for testing
+  fetch = require('node-fetch');
+} else {
+  fetch = window.fetch;
+}
 
 export const searchMovies = async (query /*,page,adult*/) => {
   try {

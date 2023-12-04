@@ -8,6 +8,7 @@ RUN npm install
 
 # Copy the entire application directory
 COPY . .
+RUN npm install --save-dev webpack@latest
 RUN npm run build
 
 FROM nginx:alpine

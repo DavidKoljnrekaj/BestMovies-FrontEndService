@@ -1,9 +1,10 @@
 import React from 'react';
 import MovieCard from './MovieCard';
+import './MovieTable.js.css';
 
 function MovieTable({ movies }) {
   return (
-    <div className="results">
+    <div className="movie-list">
       {movies.length > 0 ? (
         movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

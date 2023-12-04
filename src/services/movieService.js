@@ -29,3 +29,14 @@ export const getMovieList = async (type/* ,page*/) => {
     throw error;
   }
 };
+
+export const getTrendingMovies = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/trending/today`);
+    console.log(response);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

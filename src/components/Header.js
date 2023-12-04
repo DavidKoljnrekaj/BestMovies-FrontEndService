@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.js.css';
 
-function Header({ user }) {
+function Header({ user, onOpen }) {
   return (
     <header>
       <nav>
@@ -17,7 +17,7 @@ function Header({ user }) {
       {user ? (
         <Link to={`/profile/${user}`} className="profile-button">{user}</Link>
       ) : (
-        <Link to="/login" className="profile-button">Login</Link>
+        <button onClick={onOpen} className="profile-button">Login</button>
       )}
     </header>
   );

@@ -1,20 +1,13 @@
-.container {
-    text-align: center;
-  }
-  
   .title {
     margin: 20px 0;
+    text-align: center;
   }
   
   .search-bar {
     margin-bottom: 20px;
+    text-align: center;
   }
-  
-  .results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+
   
 
   

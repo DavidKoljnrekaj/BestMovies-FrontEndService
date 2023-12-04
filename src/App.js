@@ -6,9 +6,19 @@ import AuthForm from './components/AuthForm';
 import Profile from './components/Profile';
 import MovieList from './components/MovieList';
 import Header from './components/Header';
+import Modal from './components/Modal';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleLogin = (username) => {
     setUser(username);
@@ -20,7 +30,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <Header user={user} />
+      <Header user={user} onOpen={handleOpenModal}/>
         <Routes>
           <Route path="/" element={<MovieSearch />} />
           <Route path="/movies/:movieId" element={<MovieDetails />} />
@@ -29,6 +39,11 @@ function App() {
           <Route path="/profile/:username" element={<Profile onLogout={handleLogout} />} />
           <Route path="/movielist/:type" element={<MovieList />} />
         </Routes>
+        {isModalOpen && (
+          <Modal onClose={handleCloseModal}>
+            <AuthForm onLogin={handleLogin} onClose={handleCloseModal} />
+          </Modal>
+        )}
       </div>
     </Router>
   );

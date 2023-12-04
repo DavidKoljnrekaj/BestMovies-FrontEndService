@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { signup, login } from '../services/userService';
-import { useNavigate } from 'react-router-dom';
 import './AuthForm.js.css'; 
 
-function AuthForm({ onLogin }) {
+function AuthForm({ onLogin, onClose  }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
 
   const handleSignup = async () => {
     setMessage('');
@@ -25,7 +23,7 @@ function AuthForm({ onLogin }) {
     try {
       await login(username, password);
       onLogin(username);
-      navigate('/');
+      onClose();
     } catch (error) {
       setMessage(`Please enter a valid username and password`);
     }

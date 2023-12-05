@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../services/movieService';
+import { addToWatchlist, removeFromWatchlist   } from '../services/userService';
 import './MovieDetails.js.css';
 
 function MovieDetails({ match }) {
   const [details, setDetails] = useState(null);
   let { movieId } = useParams();
+
+  const addToWatch = async () => {
+    try {
+      await addToWatchlist(movieId);
+      alert('Movie added to watchlist');
+    } catch (error) {
+      console.error('Error adding movie to watchlist:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -22,6 +33,7 @@ function MovieDetails({ match }) {
   return (
     <div className="movie-details">
       <h1>Movie Details</h1>
+      <button onClick={addToWatch}>Add to Watchlist</button>
       {details && (
         <div>
           <h2>{details.title}</h2>

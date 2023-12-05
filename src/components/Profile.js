@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getFavourites } from '../services/userService';
+import { getWatchlist } from '../services/userService';
+import { getMovies } from '../services/movieService';
 import MovieTable from './MovieTable';
+import './Profile.js.css';
 
 function Profile() {
   const { username } = useParams();
   const [favorites, setFavorites] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
-     setFavorites(getFavourites(username));
+    const fetchMovies = async () => {
+      try {
+        const movieIds = await getWatchlist(username);
+        const movies = await getMovies(movieIds);
+        setFavorites(movies);
+      } catch (error) {
+        setIsLoggedIn(false);
+      }
+    };
+
+    fetchMovies();
   }, [username]);
 
   return (
     <div>
-      <h1>{username}'s Profile</h1>
-      <h2>Favorite Movies</h2>
+      <h1>{username}'s Watchlist</h1>
+      {isLoggedIn ? (
       <MovieTable movies={favorites} />
+    ) : (
+      <p>You must be logged in to view the watchlist.</p>
+    )}
     </div>
   );
 }

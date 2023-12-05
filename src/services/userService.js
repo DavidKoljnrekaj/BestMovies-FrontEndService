@@ -38,7 +38,6 @@ export const login = async (username, password) => {
 
 export const getWatchlist = async () => {
   try {
-    console.log(token);
     const response = await fetch(`${API_BASE_URL}/watchlist`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -52,7 +51,6 @@ export const getWatchlist = async () => {
 };
 
 export const addToWatchlist = async (movieId) => {
-  console.log(movieId);
   try {
     const response = await fetch(`${API_BASE_URL}/watchlist`, {
       method: 'POST',
@@ -71,7 +69,7 @@ export const addToWatchlist = async (movieId) => {
 
 export const removeFromWatchlist = async (movieId) => {
   try {
-    const response = await fetch(`${API_BASE_URL}watchlist/`, {
+    const response = await fetch(`${API_BASE_URL}/watchlist/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -81,6 +79,20 @@ export const removeFromWatchlist = async (movieId) => {
     });
     const data = await response.json();
     return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const isInWatchlist = async (movieId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/watchlist/${movieId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data.inWatchList;
   } catch (error) {
     throw error;
   }

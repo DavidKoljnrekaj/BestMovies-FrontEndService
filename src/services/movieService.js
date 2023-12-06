@@ -64,3 +64,23 @@ export const getMovies = async (movieIds) => {
     throw error;
   }
 };
+
+export const getMovieCast = async (movieId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cast/${movieId}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getMovieDirectors = async (movieId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cast/${movieId}/directors`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

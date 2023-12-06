@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import MovieSearch from './components/MovieSearch';
-import MovieDetails from './components/MovieDetails';
+import MovieSearch from './pages/MovieSearch';
+import MovieDetails from './pages/MovieDetails';
+import ActorDetails from './pages/ActorDetails';
+import Profile from './pages/Profile';
 import AuthForm from './components/AuthForm';
-import Profile from './components/Profile';
 import MovieList from './components/MovieList';
 import Header from './components/Header';
 import Modal from './components/Modal';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signup" element={<AuthForm />} />
           <Route path="/profile/:username" element={<Profile onLogout={handleLogout} />} />
           <Route path="/movielist/:type" element={<MovieList />} />
+          <Route path="/actors/:actorId" element={<ActorDetails/>} />
         </Routes>
         {isModalOpen && (
           <Modal onClose={handleCloseModal}>

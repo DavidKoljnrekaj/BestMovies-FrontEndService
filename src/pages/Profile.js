@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getWatchlist } from '../services/userService';
 import { getMovies } from '../services/movieService';
-import MovieTable from './MovieTable';
+import MovieTable from '../components/MovieTable';
 import './Profile.js.css';
 
 function Profile() {

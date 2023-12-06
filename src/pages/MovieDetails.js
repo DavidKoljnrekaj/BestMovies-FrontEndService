@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails, getMovieCast, getMovieDirectors } from '../services/movieService';
 import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../services/userService';
@@ -89,7 +90,17 @@ return (
           <div className="details-item">Status: {details.status}</div>
           <div className="details-item">Vote Average: {details.vote_average}</div>
           <div className="details-item">Vote Count: {details.vote_count}</div>
-          <div className="details-item">Cast: {cast.slice(0, 5).map(actor => actor.name).join(', ')}</div>
+          <div className="details-item">
+            Cast: 
+            {cast.slice(0, 5).map((actor, index, arr) => (
+              <React.Fragment key={index}>
+                <Link to={`/actors/${actor.id}`}>
+                  {actor.name}
+                </Link>
+                {index < arr.length - 1 && ', '}
+              </React.Fragment>
+            ))}
+          </div>
           <div className="details-item">Directors: {directors.map(director => director.name).join(', ')}</div>
          </div>
        </div>

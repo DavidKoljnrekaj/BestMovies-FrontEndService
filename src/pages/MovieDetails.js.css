@@ -70,3 +70,12 @@
   font-size: 1.1em;
   margin-bottom: 10px;
 }
+
+.movie-details .details-item a {
+  color: #1a0dab; /* adjust as needed */
+  text-decoration: none;
+}
+
+.movie-details .details-item a:hover {
+  text-decoration: underline;
+}

@@ -94,3 +94,13 @@ export const getActorDetails = async (actorId) => {
     throw error;
   }
 };
+
+export const getActorMovies = async (actorId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cast/${actorId}/movies`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

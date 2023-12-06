@@ -91,7 +91,7 @@ return (
           <div className="details-item">Vote Average: {details.vote_average}</div>
           <div className="details-item">Vote Count: {details.vote_count}</div>
           <div className="details-item">
-            Cast: 
+            Cast: {" "}
             {cast.slice(0, 5).map((actor, index, arr) => (
               <React.Fragment key={index}>
                 <Link to={`/actors/${actor.id}`}>

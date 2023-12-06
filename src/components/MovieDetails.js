@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails } from '../services/movieService';
+import { getMovieDetails, getMovieCast, getMovieDirectors } from '../services/movieService';
 import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../services/userService';
 import './MovieDetails.js.css';
 
 function MovieDetails() {
+  const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/original';
   const [details, setDetails] = useState(null);
   const [watchlist, setWatchlist] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [cast, setCast] = useState([]);
+  const [directors, setDirectors] = useState([]);
   let { movieId } = useParams();
 
   const toggleWatchlist = async () => { 
@@ -46,34 +49,52 @@ function MovieDetails() {
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
+      try {
+        const castData = await getMovieCast(movieId);
+        setCast(castData);
+        const directorsData = await getMovieDirectors(movieId);
+      setDirectors(directorsData);
+      } catch (error) {
+        console.error('Error fetching cast details:', error);
+      }
     };
 
     fetchMovieDetails();
   }, [movieId]);
 
 
-  return (
-    <div className="movie-details">
-      <h1>Movie Details</h1>
-      <button onClick={toggleWatchlist} className="watchlist-button">
-        {watchlist ? 'Remove from Watchlist' : 'Add to Watchlist'} {/* Button text based on watchlist state */}
-      </button>
-      {details && (
-        <div>
-          <h2>{details.title}</h2>
-          <p>{details.overview}</p>
-          <p>Genres: {details.genres.map(genre => genre.name).join(', ')}</p>
-          <p>Production Companies: {details.production_companies.map(company => company.name).join(', ')}</p>
-          <p>Production Countries: {details.production_countries.map(country => country.name).join(', ')}</p>
-          <p>Release Date: {details.release_date}</p>
-          <p>Runtime: {details.runtime} minutes</p>
-          <p>Spoken Languages: {details.spoken_languages.map(language => language.name).join(', ')}</p>
-          <p>Status: {details.status}</p>
-          <p>Tagline: {details.tagline}</p>
-          <p>Vote Average: {details.vote_average}</p>
-          <p>Vote Count: {details.vote_count}</p>
-        </div>
-      )}
+return (
+  <div className="movie-details">
+     {details && (
+     <>
+       <div className="header">
+         <h1 className="movie-title">
+          {details.title} ({new Date(details.release_date).getFullYear()})
+         </h1>
+         <p className="movie-tagline">"{details.tagline}"</p>
+         <button onClick={toggleWatchlist} className="watchlist-button">
+           {watchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
+         </button>
+       </div>
+       <div className="details-container">
+         <img src={`${BASE_IMAGE_URL}${details.poster_path}`} alt={details.title} className="details-image" />
+         <div className="details">
+          <div className="overview">{details.overview}</div>
+          <div className="details-item">Genres: {details.genres.map(genre => genre.name).join(', ')}</div>
+          <div className="details-item">Production: {details.production_companies.map(company => company.name).join(', ')}</div>
+          <div className="details-item">Countries: {details.production_countries.map(country => country.name).join(', ')}</div>
+          <div className="details-item">Release Date: {details.release_date}</div>
+          <div className="details-item">Runtime: {details.runtime} minutes</div>
+          <div className="details-item">Spoken Languages: {details.spoken_languages.map(language => language.name).join(', ')}</div>
+          <div className="details-item">Status: {details.status}</div>
+          <div className="details-item">Vote Average: {details.vote_average}</div>
+          <div className="details-item">Vote Count: {details.vote_count}</div>
+          <div className="details-item">Cast: {cast.slice(0, 5).map(actor => actor.name).join(', ')}</div>
+          <div className="details-item">Directors: {directors.map(director => director.name).join(', ')}</div>
+         </div>
+       </div>
+      </>
+       )}
     </div>
   );
 }

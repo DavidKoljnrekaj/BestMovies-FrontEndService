@@ -2,6 +2,7 @@
   text-align: center;
   font-size: 2em;
   margin-bottom: 20px;
+  padding-right: 100px;
 }
 
 .search-bar {
@@ -29,6 +30,10 @@
 
 .search-bar button:hover {
   background-color: #0056b3;
+}
+
+.trending-title {
+  padding-left: 70px;
 }
 
   

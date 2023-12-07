@@ -26,7 +26,7 @@ function Profile() {
 
   return (
     <div>
-      <h1>{username}'s Watchlist</h1>
+      <h1 className='title'>{username}'s Watchlist</h1>
       {isLoggedIn ? (
       <MovieTable movies={favorites} />
     ) : (

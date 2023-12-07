@@ -100,7 +100,7 @@ return (
             <span className="vote-count">{details.vote_count}</span>
           </div>
           <div className="details-item">
-            Cast: {" "}
+            Cast:&nbsp;
             {cast.slice(0, 5).map((actor, index, arr) => (
               <React.Fragment key={index}>
                 <Link to={`/actors/${actor.id}`}>

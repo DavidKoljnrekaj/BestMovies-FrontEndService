@@ -67,7 +67,7 @@ function MovieSearch() {
         <p>Loading...</p>
       ) : !hasSearched ? (
         <>
-          <h2>Trending today:</h2>
+          <h2 className="trending-title">Trending today:</h2>
           <MovieTable movies={trendingMovies} />
         </>
       ) : (

@@ -1,8 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import './Header.js.css';
 
-function Header({ user, onOpen }) {
+function Header({ user, onOpen, onLogout }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onLogout();
+    navigate('/');
+  };
+
+
   return (
     <header>
       <nav>
@@ -15,7 +23,13 @@ function Header({ user, onOpen }) {
         </ul>
       </nav>
       {user ? (
-        <Link to={`/profile/${user}`} className="profile-button">{user}</Link>
+        <div className="dropdown">
+          <button className="dropbtn">{user}</button>
+          <div className="dropdown-content">
+            <Link to={`/profile/${user}`}>My Watchlist</Link>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        </div>
       ) : (
         <button onClick={onOpen} className="profile-button">Login</button>
       )}

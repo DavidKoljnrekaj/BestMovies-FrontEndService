@@ -88,10 +88,19 @@ return (
           <div className="details-item">Runtime: {details.runtime} minutes</div>
           <div className="details-item">Spoken Languages: {details.spoken_languages.map(language => language.name).join(', ')}</div>
           <div className="details-item">Status: {details.status}</div>
-          <div className="details-item">Vote Average: {details.vote_average}</div>
-          <div className="details-item">Vote Count: {details.vote_count}</div>
           <div className="details-item">
-            Cast: {" "}
+            Rating: {" "}
+            <div className="vote-average">
+              <span style={{width: `${details.vote_average * 10}%`}}></span>
+            </div>
+            <span className="vote-average-number">{details.vote_average}/10</span>
+          </div>
+          <div className="details-item">
+            Vote Count:&nbsp;
+            <span className="vote-count">{details.vote_count}</span>
+          </div>
+          <div className="details-item">
+            Cast:&nbsp;
             {cast.slice(0, 5).map((actor, index, arr) => (
               <React.Fragment key={index}>
                 <Link to={`/actors/${actor.id}`}>

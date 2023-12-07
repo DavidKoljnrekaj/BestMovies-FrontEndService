@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchMovies , getTrendingMovies } from '../services/movieService';
-import MovieTable from './MovieTable';
+import MovieTable from '../components/MovieTable';
 import './MovieSearch.js.css';
 
 function MovieSearch() {

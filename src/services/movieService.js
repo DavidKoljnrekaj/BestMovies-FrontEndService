@@ -8,9 +8,9 @@ if (typeof window === 'undefined') {
   fetch = window.fetch;
 }
 
-export const searchMovies = async (query /*,page,adult*/) => {
+export const searchMovies = async (query ,page) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/search?query=${query}&adult=true&page=1`);
+    const response = await fetch(`${API_BASE_URL}/search?query=${query}&adult=true&page=${page}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -28,9 +28,9 @@ export const getMovieDetails = async (movieId) => {
   }
 };
 
-export const getMovieList = async (type/* ,page*/) => {
+export const getMovieList = async (type ,page) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/${type}?page=1`);
+    const response = await fetch(`${API_BASE_URL}/${type}?page=${page}`);
     const data = await response.json();
     return data;
   } catch (error) {

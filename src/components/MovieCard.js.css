@@ -1,16 +1,26 @@
 .card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 20px;
   width: 190px;
-  height: 250px;
+  height: 330px;
   text-decoration: none;
   color: inherit;
   overflow: hidden; 
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
   background-color: #f0f0f0;
   transform: scale(1.05);
+}
+
+.card-image {
+  flex-grow: 1;
+  background-size: cover;
+}
+
+.card-title {
+  font-size: 0.8em;
+  text-align: center;
+  padding: 5px;
 }

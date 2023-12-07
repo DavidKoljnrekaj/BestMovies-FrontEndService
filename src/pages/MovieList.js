@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieList } from '../services/movieService';
-import MovieTable from './MovieTable';
-import Pagination from './Pagination';
+import MovieTable from '../components/MovieTable';
+import Pagination from '../components/Pagination';
 import './MovieList.js.css';
 
 

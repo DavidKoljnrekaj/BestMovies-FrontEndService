@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieSearch from './pages/MovieSearch';
 import MovieDetails from './pages/MovieDetails';
 import ActorDetails from './pages/ActorDetails';
+import MovieList from './pages/MovieList';
 import Profile from './pages/Profile';
 import AuthForm from './components/AuthForm';
-import MovieList from './components/MovieList';
 import Header from './components/Header';
 import Modal from './components/Modal';
 

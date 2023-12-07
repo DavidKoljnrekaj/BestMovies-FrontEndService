@@ -79,3 +79,27 @@
 .movie-details .details-item a:hover {
   text-decoration: underline;
 }
+
+
+.details-item {
+  display: flex;
+  align-items: center;
+}
+
+.vote-average {
+  position: relative;
+  width: 200px;
+  height: 10px;
+  background-color: #eee;
+  margin-left: 10px;
+}
+
+.vote-average span {
+  display: block;
+  height: 100%;
+  background-color: #007BFF;
+}
+
+.vote-average-number {
+  margin-left: 10px;
+}

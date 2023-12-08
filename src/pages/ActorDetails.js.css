@@ -81,7 +81,25 @@
 
   .actor-details .movies {
     display: flex;
-    max-width: 100%; /* ensure the container doesn't exceed the screen width */
-    overflow-x: auto; /* enable horizontal scrolling */
+    max-width: 100%;
+    overflow-x: auto;
     gap: 10px;
+  }
+
+  .vote-average {
+    position: relative;
+    width: 150px;
+    height: 10px;
+    background-color: #eee;
+    margin-left: 10px;
+  }
+  
+  .vote-average span {
+    display: block;
+    height: 100%;
+    background-color: #007BFF;
+  }
+  
+  .vote-average-number {
+    margin-left: 10px;
   }

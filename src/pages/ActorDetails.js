@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getActorDetails, getActorMovies } from '../services/castService';
+import { getActorDetails, getActorMovies, getActorAverageRating } from '../services/castService';
 import MovieCard from '../components/MovieCard';
 import './ActorDetails.js.css';
 
@@ -8,6 +8,8 @@ function ActorDetails() {
   const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/original';
   const [actor, setActor] = useState(null);
   const [movies, setMovies] = useState([]);
+  const [averageRating, setAverageRating] = useState([]);
+
 
   let { actorId } = useParams();
 
@@ -17,6 +19,8 @@ function ActorDetails() {
       setActor(actorData);
       const actorMovies = await getActorMovies(actorId); 
       setMovies(actorMovies);
+      const averageRating = await getActorAverageRating(actorId);
+      setAverageRating(averageRating);
     };
 
     fetchActorDetails();
@@ -39,7 +43,13 @@ function ActorDetails() {
                 </div>
                 <div className="details-item">Birth Date: {actor.birthday}</div>
                 <div className="details-item">Place of Birth: {actor.place_of_birth}</div>
-                {/* Add more actor details here */}
+                <div className="details-item">
+                  Average rating: {" "}
+                  <div className="vote-average">
+                    <span style={{width: `${averageRating * 10}%`}}></span>
+                  </div>
+                  <span className="vote-average-number">{averageRating}/10</span>
+                </div>
               </div>
             </div>
             <div className="name-bio">

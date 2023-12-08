@@ -43,7 +43,7 @@ function MovieDetails() {
         setWatchlist(isInWatchlistResult);
         setIsLoggedIn(true);
       } catch (error) {
-        console.error('Error fetching watchlist:', error);
+        
       }
       try {
         const response = await getMovieDetails(movieId);
@@ -111,7 +111,7 @@ return (
               </React.Fragment>
             ))}
           </div>
-          <div className="details-item">Directors: {directors.map(director => director.name).join(', ')}</div>
+          <div className="details-item">Directors: {directors.map(director => director.name).join(',&nbsp;')}</div>
          </div>
        </div>
       </>

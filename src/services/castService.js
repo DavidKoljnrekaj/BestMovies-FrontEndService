@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://34.88.186.82/movies/cast'; //'http://localhost:5001/movies';
+//const API_BASE_URL = 'http://34.88.186.82/movies/cast';
+const API_BASE_URL = 'http://localhost:5001/movies/cast';
 let fetch;
 
 if (typeof window === 'undefined') {
@@ -45,5 +46,16 @@ export const getMovieCast = async (movieId) => {
       return data;
     } catch (error) {
       throw error;
+    }
+  };
+
+  export const getActorAverageRating = async (actorId) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/${actorId}/average-rating`);
+      console.log(response);
+      const averageRating = await response.json();
+      return averageRating;
+    } catch (error) {
+      console.error(error);
     }
   };

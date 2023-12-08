@@ -10,7 +10,7 @@ if (typeof window === 'undefined') {
 
 export const searchMovies = async (query ,page) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/search?query=${query}&adult=true&page=${page}`);
+    const response = await fetch(`${API_BASE_URL}/search?query=${query}&page=${page}`);
     const data = await response.json();
     return data;
   } catch (error) {

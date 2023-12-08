@@ -33,9 +33,12 @@
 }
 
 .trending-title {
-  padding-left: 70px;
+  padding-left: 30px;
 }
 
+.container .movies{
+  padding-left: 70px;
+}
   
 
   

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails, getMovieCast, getMovieDirectors } from '../services/movieService';
+import { getMovieDetails } from '../services/movieService';
+import { getMovieCast, getMovieDirectors } from '../services/castService';
 import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../services/userService';
 import './MovieDetails.js.css';
 

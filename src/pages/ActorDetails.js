@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getActorDetails, getActorMovies } from '../services/movieService';
+import { getActorDetails, getActorMovies } from '../services/castService';
 import MovieCard from '../components/MovieCard';
 import './ActorDetails.js.css';
 

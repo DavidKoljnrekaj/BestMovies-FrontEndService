@@ -49,12 +49,11 @@ export const getMovieCast = async (movieId) => {
     }
   };
 
-  export const getActorAverageRating = async (actorId) => {
+  export const getActorStatistics = async (actorId) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/${actorId}/average-rating`);
-      console.log(response);
-      const averageRating = await response.json();
-      return averageRating;
+      const response = await fetch(`${API_BASE_URL}/${actorId}/statistics`);
+      const statistics = await response.json();
+      return statistics;
     } catch (error) {
       console.error(error);
     }

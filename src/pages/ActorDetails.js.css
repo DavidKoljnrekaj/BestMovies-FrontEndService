@@ -103,3 +103,22 @@
   .vote-average-number {
     margin-left: 10px;
   }
+
+  .statistics {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    width: 110%; 
+    margin-left:  10px;
+  }
+  
+  .statistics .details-item {
+    flex: 1;
+    text-align: center;
+    color: #000;
+  }
+
+  h2 {
+    margin-left:  10px;
+  }

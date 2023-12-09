@@ -1,7 +1,7 @@
 //const API_BASE_URL = 'http://34.88.83.207/user';
 const API_BASE_URL = 'http://localhost:5002/user';
 let token = '';
-
+let currentUser = '';
 export const signup = async (username, password) => {
   try {
     const response = await fetch(`${API_BASE_URL}/signup`, {
@@ -102,4 +102,12 @@ export const isInWatchlist = async (movieId) => {
 export const getToken = () => {
   return token;
 };
+
+export const setCurrentUser = (user) => {
+  currentUser=user;
+};
+
+export const getCurrentUser = () => {
+  return currentUser;
+}
 

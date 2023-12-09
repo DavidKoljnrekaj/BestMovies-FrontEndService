@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { setCurrentUser } from './services/userService';
 import MovieSearch from './pages/MovieSearch';
 import MovieDetails from './pages/MovieDetails';
 import ActorDetails from './pages/ActorDetails';
@@ -22,10 +23,12 @@ function App() {
   };
 
   const handleLogin = (username) => {
+    setCurrentUser(username);
     setUser(username);
   };
 
   const handleLogout = () => {
+    setCurrentUser("");
     setUser(null);
   };
   return (

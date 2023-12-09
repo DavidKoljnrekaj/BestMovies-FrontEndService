@@ -9,17 +9,31 @@ function AuthForm({ onLogin, onClose  }) {
 
   const handleSignup = async () => {
     setMessage('');
-    try {
-      // Replace this with your actual signup logic
-      await signup(username, password);
-      setMessage('User succesfully created, please login');
-    } catch (error) {
-      setMessage(`Please choose a different username`);
+    if (username === '' || password === '') {
+      setMessage('Please fill in all fields');
+      return;
+    }
+    if (password.length < 6) {
+      setMessage('Password should be at least 6 characters long');
+      return;
+    }
+    const confirmation = window.confirm('Are you sure you want to sign up?');
+    if (confirmation) {
+      try {
+        await signup(username, password);
+        setMessage('User successfully created, please login');
+      } catch (error) {
+        setMessage(`Please choose a different username`);
+      }
     }
   };
 
   const handleLogin = async () => {
     setMessage('');
+    if (username === '' || password === '') {
+      setMessage('Please fill in all fields');
+      return;
+    }
     try {
       await login(username, password);
       onLogin(username);

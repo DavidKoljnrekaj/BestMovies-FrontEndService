@@ -44,7 +44,7 @@ function MovieList() {
 
   return (
     <div>
-    <h1 className='title'>{type.replace('_', ' ').toUpperCase()} Movies</h1>
+    <h1 className='title'>{type.replace('_', ' ').toUpperCase()} MOVIES:</h1>
     <MovieTable movies={movies} />
     <Pagination
         currentPage={currentPage}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails, getMovieCast, getMovieDirectors } from '../services/movieService';
+import { getMovieDetails } from '../services/movieService';
+import { getMovieCast, getMovieDirectors } from '../services/castService';
 import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../services/userService';
 import './MovieDetails.js.css';
 
@@ -42,7 +43,7 @@ function MovieDetails() {
         setWatchlist(isInWatchlistResult);
         setIsLoggedIn(true);
       } catch (error) {
-        console.error('Error fetching watchlist:', error);
+        
       }
       try {
         const response = await getMovieDetails(movieId);
@@ -110,7 +111,7 @@ return (
               </React.Fragment>
             ))}
           </div>
-          <div className="details-item">Directors: {directors.map(director => director.name).join(', ')}</div>
+          <div className="details-item">Directors: {directors.map(director => director.name).join(',&nbsp;')}</div>
          </div>
        </div>
       </>

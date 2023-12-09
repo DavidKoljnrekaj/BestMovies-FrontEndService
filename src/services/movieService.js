@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://34.88.186.82/movies'; //'http://localhost:5001/movies';
+//const API_BASE_URL = 'http://34.88.186.82/movies';
+const API_BASE_URL = 'http://localhost:5001/movies';
 let fetch;
 
 if (typeof window === 'undefined') {
@@ -57,46 +58,6 @@ export const getMovies = async (movieIds) => {
       },
       body: JSON.stringify({ ids: movieIds }),
     });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getMovieCast = async (movieId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/cast/${movieId}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getMovieDirectors = async (movieId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/cast/${movieId}/directors`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getActorDetails = async (actorId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/cast/${actorId}/details`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getActorMovies = async (actorId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/cast/${actorId}/movies`);
     const data = await response.json();
     return data;
   } catch (error) {

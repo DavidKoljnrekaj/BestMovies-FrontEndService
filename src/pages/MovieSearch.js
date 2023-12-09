@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchMovies , getTrendingMovies } from '../services/movieService';
+import Trending from '../components/Trending';
 import MovieTable from '../components/MovieTable';
 import Pagination from '../components/Pagination';
 import './MovieSearch.js.css';
@@ -8,6 +9,7 @@ function MovieSearch() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trending, setTrending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(20);
@@ -29,7 +31,8 @@ function MovieSearch() {
 
   useEffect(() => {
     getTrendingMovies().then(movies => {
-      setTrendingMovies(movies.results);
+      setTrendingMovies(movies.movies);
+      setTrending(movies.trending);
       setIsLoading(false);
     });
   }, []);
@@ -66,12 +69,16 @@ function MovieSearch() {
       {isLoading ? (
         <p>Loading...</p>
       ) : !hasSearched ? (
-        <>
-          <h2 className="trending-title">Trending today:</h2>
-          <MovieTable movies={trendingMovies} />
-        </>
+        <div className="movies">
+        <Trending
+        trendingMovies={trendingMovies}
+        highestRatedMovie={trending.movie}
+        mostPopularGenre={trending.genre}
+        mostFrequentActor={trending.actor}
+      />
+      </div>
       ) : (
-        <>
+        <div className="movies">
           <MovieTable movies={results} />
           <Pagination
             currentPage={currentPage}
@@ -79,7 +86,7 @@ function MovieSearch() {
             onNextPage={handleNextPage}
             onPreviousPage={handlePreviousPage}
           />
-        </>
+        </div>
       )}
       
     </div>

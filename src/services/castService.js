@@ -1,5 +1,5 @@
-const API_BASE_URL = 'http://34.88.186.82/movies/cast';
-//const API_BASE_URL = 'http://localhost:5001/movies/cast';
+//const API_BASE_URL = 'http://34.88.186.82/movies/cast';
+const API_BASE_URL = 'http://localhost:5001/movies/cast';
 let fetch;
 
 if (typeof window === 'undefined') {

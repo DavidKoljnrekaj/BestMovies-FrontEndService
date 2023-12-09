@@ -1,6 +1,6 @@
 import { getToken } from './userService';
-//const API_BASE_URL = 'http://34.88.83.207/review';
-const API_BASE_URL = 'http://localhost:5002/review';
+const API_BASE_URL = 'http://34.88.83.207/review';
+//const API_BASE_URL = 'http://localhost:5002/review';
 
 
 export const addReview = async (movieId, content, rating) => {

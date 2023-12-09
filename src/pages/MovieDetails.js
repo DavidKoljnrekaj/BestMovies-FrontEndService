@@ -19,6 +19,7 @@ function MovieDetails() {
 
   const toggleWatchlist = async () => { 
     if (!isLoggedIn) {
+      
       alert('You must be logged in to add movies to your watchlist');
       return;
     }
@@ -46,7 +47,6 @@ function MovieDetails() {
         setIsLoggedIn(true);
         setUsername(getCurrentUser());  
       } catch (error) {
-        
       }
       try {
         const response = await getMovieDetails(movieId);

@@ -17,10 +17,7 @@
   }
   
   .statistics .statistic-item img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: cover;
+    padding-top: 30px;
   }
   
   .trending-title {

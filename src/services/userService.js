@@ -1,5 +1,5 @@
-//const API_BASE_URL = 'http://34.88.83.207/user';
-const API_BASE_URL = 'http://localhost:5002/user';
+const API_BASE_URL = 'http://34.88.83.207/user';
+//const API_BASE_URL = 'http://localhost:5002/user';
 let token = '';
 
 export const signup = async (username, password) => {

@@ -24,7 +24,6 @@ function ActorDetails() {
       const actorMovies = await getActorMovies(actorId); 
       setMovies(actorMovies);
       const actorStatistics = await getActorStatistics(actorId);
-      console.log(actorStatistics);
       setStatistics(actorStatistics);
     };
 

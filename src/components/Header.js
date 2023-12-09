@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link , useNavigate} from 'react-router-dom';
+import logo from '../icons/logo.png';
 import './Header.js.css';
 
 function Header({ user, onOpen, onLogout }) {
@@ -13,9 +14,9 @@ function Header({ user, onOpen, onLogout }) {
 
   return (
     <header>
+    <Link to="/"><img src={logo} alt="Home" className="logo"/></Link>
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
           <li><Link to="/movielist/now_playing">Now Playing</Link></li>
           <li><Link to="/movielist/popular">Popular</Link></li>
           <li><Link to="/movielist/top_rated">Top Rated</Link></li>

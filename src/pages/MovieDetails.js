@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../services/movieService';
 import { getMovieCast, getMovieDirectors } from '../services/castService';
-import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../services/userService';
+import { addToWatchlist, removeFromWatchlist, isInWatchlist, getCurrentUser } from '../services/userService';
+import Reviews from '../components/Reviews';
 import './MovieDetails.js.css';
 
 function MovieDetails() {
@@ -13,10 +14,12 @@ function MovieDetails() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cast, setCast] = useState([]);
   const [directors, setDirectors] = useState([]);
+  const [username, setUsername] = useState('');
   let { movieId } = useParams();
 
   const toggleWatchlist = async () => { 
     if (!isLoggedIn) {
+      
       alert('You must be logged in to add movies to your watchlist');
       return;
     }
@@ -42,8 +45,8 @@ function MovieDetails() {
         const isInWatchlistResult = await isInWatchlist(movieId);
         setWatchlist(isInWatchlistResult);
         setIsLoggedIn(true);
+        setUsername(getCurrentUser());  
       } catch (error) {
-        
       }
       try {
         const response = await getMovieDetails(movieId);
@@ -66,6 +69,7 @@ function MovieDetails() {
 
 
 return (
+  <>
   <div className="movie-details">
      {details && (
      <>
@@ -111,12 +115,16 @@ return (
               </React.Fragment>
             ))}
           </div>
-          <div className="details-item">Directors: {directors.map(director => director.name).join(',&nbsp;')}</div>
+          <div className="details-item">Directors: {directors.map(director => director.name).join(',&nbsp;')}</div>          
          </div>
        </div>
       </>
        )}
     </div>
+    {details && (
+    <Reviews movieId={movieId} username={username} />
+    )}
+    </>
   );
 }
 

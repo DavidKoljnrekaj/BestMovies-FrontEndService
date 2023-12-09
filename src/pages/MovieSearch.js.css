@@ -1,13 +1,44 @@
-  .title {
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .search-bar {
-    margin-bottom: 20px;
-    text-align: center;
-  }
+.title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  padding-right: 100px;
+}
 
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+.trending-title {
+  padding-left: 30px;
+}
+
+.container .movies{
+  padding-left: 70px;
+}
   
 
   

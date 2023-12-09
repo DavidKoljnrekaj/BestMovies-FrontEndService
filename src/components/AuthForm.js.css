@@ -1,25 +1,59 @@
 .auth-container {
-    text-align: center;
-  }
-  
-  .auth-title {
-    margin: 20px 0;
-  }
-  
-  .auth-card {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 300px;
-  }
-  
-  .auth-card label {
-    display: block;
-    margin-bottom: 20px;
-  }
-  
-  .back-button {
-    display: block;
-    margin-top: 20px;
-  }
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 50px 0;
+  font-family: Arial, sans-serif;
+}
+
+.auth-title {
+  margin: 20px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.auth-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 300px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.auth-card label {
+  display: block;
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-card button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  display: block;
+  margin-top: 20px;
+}
